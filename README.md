@@ -1,53 +1,58 @@
-# Express API Starter
+ 📚 FAQ Manager (Node.js + MongoDB)
 
-How to use this template:
+A full-stack FAQ (Frequently Asked Questions) manager built with **Express.js**, **Monk**, **Joi**, and **vanilla HTML/JS** for CRUD operations on FAQs.
 
-```sh
-npx create-express-api --directory my-api-name
-```
+> Supports creating, viewing, updating, and deleting FAQs — with a simple web UI and API.
 
-Includes API Server utilities:
+---
 
-* [morgan](https://www.npmjs.com/package/morgan)
-  * HTTP request logger middleware for node.js
-* [helmet](https://www.npmjs.com/package/helmet)
-  * Helmet helps you secure your Express apps by setting various HTTP headers. It's not a silver bullet, but it can help!
-* [dotenv](https://www.npmjs.com/package/dotenv)
-  * Dotenv is a zero-dependency module that loads environment variables from a `.env` file into `process.env`
-* [cors](https://www.npmjs.com/package/cors)
-  * CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
+## 🚀 Features
 
-Development utilities:
+- 🔄 Full CRUD support (Create, Read, Update, Delete)
+- ⚙️ RESTful API using Express and MongoDB (via Monk)
+- 🔒 Joi validation for backend data integrity
+- 🧰 Middleware for error handling and security via Helmet
+- 🖥️ Web-based frontend UI (pure HTML + JS)
+- 🌐 CORS + CSP-safe (no inline scripts)
 
-* [nodemon](https://www.npmjs.com/package/nodemon)
-  * nodemon is a tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected.
-* [eslint](https://www.npmjs.com/package/eslint)
-  * ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code.
-* [jest](https://www.npmjs.com/package/jest)
-  * Jest is a delightful JavaScript Testing Framework with a focus on simplicity.
-* [supertest](https://www.npmjs.com/package/supertest)
-  * HTTP assertions made easy via superagent.
+---
 
-## Setup
+## 📦 Tech Stack
 
-```
+- Backend: **Node.js**, **Express**
+- Database: **MongoDB** via **Monk**
+- Validation: **Joi**
+- Security: **Helmet**, **CORS**
+- Frontend: **HTML + CSS + Vanilla JS**
+
+## steps
+git clone https://github.com/your-username/faq-api.git
+cd faq-api
 npm install
-```
+npm start
 
-## Lint
 
-```
-npm run lint
-```
+# sample json
+{
+  "question": "How does this work?",
+  "answer": "This is a simple FAQ manager app.",
+  "video_url": "https://www.example.com"
+}
 
-## Test
 
-```
-npm test
-```
 
-## Development
+🖥️ Frontend Features
+Create or update FAQs using a form
 
-```
-npm run dev
-```
+View all FAQs in a clean UI
+
+Edit/Delete existing FAQs with real-time updates
+
+Clean design and works on any modern browser
+
+Fully CSP-compliant (no inline JS)
+
+📄 License
+MIT © Bishakha
+
+
