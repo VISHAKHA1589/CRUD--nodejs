@@ -7,7 +7,8 @@ const faqs= db.get('faqs');
 const schema= joi.object({
     question: joi.string().trim().required(),
     answer: joi.string().trim().required(),
-    video_url: joi.string().uri(),
+    video_url: joi.string().uri().allow('').optional()
+    ,
 
 });
 
@@ -26,10 +27,19 @@ router.get('/',async (req,res,next)=>{
 
 
 //read one
-router.get('/:id', (req,res,next)=>{
-    res.json({
-        message:"hello read one"
-    })
+router.get('/:id', async(req,res,next)=>{
+    try{
+        const {id}= req.params;
+        const item= await faqs.findOne({
+            _id: id,
+        });
+        //if item not find goes to not found handler
+        if(!item) return next();
+        return res.json(item);
+    }
+    catch(error){
+        next(error);
+    }
 
 })
 
@@ -39,7 +49,7 @@ router.post('/', async(req,res,next)=>{
     console.log(req.body);
     const value= await schema.validateAsync(req.body);
     const inserted = await faqs.insert(value);
-    res.json(value);
+    res.json(inserted);
    }catch(error){
     next(error);
    }
@@ -47,18 +57,44 @@ router.post('/', async(req,res,next)=>{
 })
 
 //Update one
-router.post('/:id', (req,res,next)=>{
-    res.json({
-        message:"hello update one"
-    })
+router.put('/:id', async(req,res,next)=>{
+    try{
+        const {id}= req.params;
+        const value= await schema.validateAsync(req.body);
+        const item= await faqs.findOne({
+            _id: id,
+        });
+        if(!item) return next();
+        const updated = await faqs.findOneAndUpdate(
+            { _id: id },
+            { $set: value }
+        );
+        res.json(updated);
+       }catch(error){
+        next(error);
+       }
+
+   
 
 })
 
 //Delete One
-router.delete('/:id', (req,res,next)=>{
-    res.json({
-        message:"hello delete one"
-    })
+router.delete('/:id', async(req,res,next)=>{
+    try{
+    const {id}= req.params;
+    const item= await faqs.findOne({_id:id});
+    if(!item) return res.status(404).json({
+        message:"FAQ not found"
+    });
+
+    await faqs.remove({_id :id})
+    res.json({ message: "Faq deleted sucessfully", deleteItem: item})
+    }
+    catch{
+
+        next(error)
+    }
+
 
 })
 module.exports= router;

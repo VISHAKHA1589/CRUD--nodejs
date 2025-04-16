@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQs Admin</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      background-color: #f3f3f3;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form, .faq {
+      background: white;
+      padding: 1rem;
+      margin: 1rem auto;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 600px;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.2rem;
+    }
+
+    button {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .faq {
+      margin-bottom: 1rem;
+    }
+
+    .faq button {
+      background: red;
+      margin-left: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Manage FAQs</h1>
+
+  <!-- Create / Update Form -->
+  <form id="faq-form">
+    <input type="hidden" id="faq-id" />
+    <label>Question:
+      <input type="text" id="question" required />
+    </label>
+    <label>Answer:
+      <textarea id="answer" required></textarea>
+    </label>
+    <label>Video URL:
+      <input type="url" id="video_url" />
+    </label>
+    <button type="submit">Save FAQ</button>
+  </form>
+
+  <h2>All FAQs</h2>
+  <div id="faqs"></div>
+
+  <script src="index.js">
+    
+  </script>
+
+</body>
+</html>
